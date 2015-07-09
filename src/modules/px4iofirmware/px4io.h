@@ -85,6 +85,7 @@ extern uint16_t			r_page_servo_failsafe[]; /* PX4IO_PAGE_FAILSAFE_PWM */
 extern uint16_t			r_page_servo_control_min[]; /* PX4IO_PAGE_CONTROL_MIN_PWM */
 extern uint16_t			r_page_servo_control_max[]; /* PX4IO_PAGE_CONTROL_MAX_PWM */
 extern uint16_t			r_page_servo_disarmed[];	/* PX4IO_PAGE_DISARMED_PWM */
+extern uint16_t			r_page_uart_buffer[PKT_MAX_REGS];
 
 /*
  * Register aliases.
@@ -174,6 +175,37 @@ extern pwm_limit_t pwm_limit;
 
 #endif
 
+#ifdef CONFIG_ARCH_BOARD_RASPILOTIO_BETA
+
+# define PX4IO_RELAY_CHANNELS		0
+# define POWER_SPEKTRUM(_s)		stm32_gpiowrite(GPIO_SPEKTRUM_PWR_EN, (_s))
+# define ENABLE_SBUS_OUT(_s)		stm32_gpiowrite(GPIO_SBUS_OENABLE, !(_s))
+
+# define VDD_SERVO_FAULT		(!stm32_gpioread(GPIO_SERVO_FAULT_DETECT))
+
+# define PX4IO_ADC_CHANNEL_COUNT	2
+# define ADC_VSERVO			4
+# define ADC_RSSI			5
+
+#endif
+
+#ifdef CONFIG_ARCH_BOARD_RASPILOTIO_V1
+
+# define PX4IO_RELAY_CHANNELS		0
+# define ENABLE_SBUS_OUT(_s)		stm32_gpiowrite(GPIO_SBUS_OENABLE, !(_s))
+
+# define PX4IO_ADC_CHANNEL_COUNT	8
+# define ADC_VSERVO			4
+# define ADC_RSSI			5
+# define ADC_BATVOLT		10
+# define ADC_BATCURR		11
+# define ADC_VDD5V			12
+# define ADC_PRESSU			13
+# define ADC_AUX1			14
+# define ADC_AUX2			15
+
+#endif
+
 #define BUTTON_SAFETY		stm32_gpioread(GPIO_BTN_SAFETY)
 
 #define CONTROL_PAGE_INDEX(_group, _channel) (_group * PX4IO_CONTROL_CHANNELS + _channel)
@@ -201,6 +233,9 @@ extern void	interface_tick(void);
  */
 extern int	registers_set(uint8_t page, uint8_t offset, const uint16_t *values, unsigned num_values);
 extern int	registers_get(uint8_t page, uint8_t offset, uint16_t **values, unsigned *num_values);
+#ifdef CONFIG_ARCH_BOARD_RASPILOTIO_V1
+extern int	registers_spiuart(uint8_t page, uint8_t offset, const uint16_t *values_w, uint16_t **values_r, unsigned *num_values);
+#endif
 
 /**
  * Sensors/misc inputs
@@ -222,6 +257,16 @@ extern int	sbus_init(const char *device);
 extern bool	sbus_input(uint16_t *values, uint16_t *num_values, bool *sbus_failsafe, bool *sbus_frame_drop, uint16_t max_channels);
 extern void	sbus1_output(uint16_t *values, uint16_t num_values);
 extern void	sbus2_output(uint16_t *values, uint16_t num_values);
+
+#ifdef CONFIG_ARCH_BOARD_RASPILOTIO_V1
+/**
+ * spi-uart
+ */
+extern void	spiuart_init(uint32_t baudrate);
+extern void spiuart_setbaud(uint32_t baudrate);
+extern int  spiuart_input(uint8_t *values, uint16_t num_values);
+extern int  spiuart_output(uint8_t *values, uint16_t num_values);
+#endif
 
 /** global debug level for isr_debug() */
 extern volatile uint8_t debug_level;

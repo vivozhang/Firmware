@@ -24,6 +24,13 @@ ifeq ($(BOARD),px4io-v2)
 SRCS		+= serial.c \
 		   ../systemlib/hx_stream.c
 endif
+ifeq ($(BOARD),raspilotio-beta)
+SRCS		+= i2c.c
+endif
+ifeq ($(BOARD),raspilotio-v1)
+SRCS		+= spi.c \
+            spiuart.c
+endif
 
 SELF_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
 include $(SELF_DIR)../systemlib/mixer/multi_tables.mk

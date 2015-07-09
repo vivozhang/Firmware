@@ -110,8 +110,17 @@
 /* no GPIO driver on the PX4IOv2 board */
 #endif
 
+#ifdef CONFIG_ARCH_BOARD_RASPILOTIO_BETA
+/* no GPIO driver on the raspilotio-beta board */
+#endif
+
+#ifdef CONFIG_ARCH_BOARD_RASPILOTIO_V1
+/* no GPIO driver on the raspilotio-v1 board */
+#endif
+
 #if !defined(CONFIG_ARCH_BOARD_PX4IO_V1) && !defined(CONFIG_ARCH_BOARD_PX4IO_V2)  && \
 	!defined(CONFIG_ARCH_BOARD_PX4FMU_V1) && !defined(CONFIG_ARCH_BOARD_PX4FMU_V2) && \
+	!defined(CONFIG_ARCH_BOARD_RASPILOTIO_BETA) && !defined(CONFIG_ARCH_BOARD_RASPILOTIO_V1) && \
 	!defined(CONFIG_ARCH_BOARD_AEROCORE)
 # error No CONFIG_ARCH_BOARD_xxxx set
 #endif

@@ -63,6 +63,10 @@ static const uint16_t	r_page_config[] = {
 	[PX4IO_P_CONFIG_PROTOCOL_VERSION]	= PX4IO_PROTOCOL_VERSION,
 #ifdef CONFIG_ARCH_BOARD_PX4IO_V2
 	[PX4IO_P_CONFIG_HARDWARE_VERSION]	= 2,
+#elif defined(CONFIG_ARCH_BOARD_RASPILOTIO_BETA)
+    [PX4IO_P_CONFIG_HARDWARE_VERSION]	= 0,
+#elif defined(CONFIG_ARCH_BOARD_RASPILOTIO_V1)
+    [PX4IO_P_CONFIG_HARDWARE_VERSION]	= 1,
 #else
 	[PX4IO_P_CONFIG_HARDWARE_VERSION]	= 1,
 #endif
@@ -150,6 +154,9 @@ volatile uint16_t	r_page_setup[] =
 #ifdef CONFIG_ARCH_BOARD_PX4IO_V2
 	/* default to RSSI ADC functionality */
 	[PX4IO_P_SETUP_FEATURES]		= PX4IO_P_SETUP_FEATURES_ADC_RSSI,
+#elif defined(CONFIG_ARCH_BOARD_RASPILOTIO_BETA) || defined(CONFIG_ARCH_BOARD_RASPILOTIO_V1)
+    /* default to RSSI ADC functionality */
+    [PX4IO_P_SETUP_FEATURES]		= PX4IO_P_SETUP_FEATURES_ADC_RSSI,
 #else
 	[PX4IO_P_SETUP_FEATURES]		= 0,
 #endif
@@ -175,6 +182,16 @@ volatile uint16_t	r_page_setup[] =
 };
 
 #ifdef CONFIG_ARCH_BOARD_PX4IO_V2
+#define PX4IO_P_SETUP_FEATURES_VALID	(PX4IO_P_SETUP_FEATURES_SBUS1_OUT | \
+					 PX4IO_P_SETUP_FEATURES_SBUS2_OUT | \
+					 PX4IO_P_SETUP_FEATURES_ADC_RSSI | \
+					 PX4IO_P_SETUP_FEATURES_PWM_RSSI)
+#elif defined(CONFIG_ARCH_BOARD_RASPILOTIO_BETA)
+#define PX4IO_P_SETUP_FEATURES_VALID	(PX4IO_P_SETUP_FEATURES_SBUS1_OUT | \
+					 PX4IO_P_SETUP_FEATURES_SBUS2_OUT | \
+					 PX4IO_P_SETUP_FEATURES_ADC_RSSI | \
+					 PX4IO_P_SETUP_FEATURES_PWM_RSSI)
+#elif defined(CONFIG_ARCH_BOARD_RASPILOTIO_V1)
 #define PX4IO_P_SETUP_FEATURES_VALID	(PX4IO_P_SETUP_FEATURES_SBUS1_OUT | \
 					 PX4IO_P_SETUP_FEATURES_SBUS2_OUT | \
 					 PX4IO_P_SETUP_FEATURES_ADC_RSSI | \
@@ -253,6 +270,15 @@ uint16_t		r_page_servo_control_max[PX4IO_SERVO_COUNT] = { PWM_DEFAULT_MAX, PWM_D
  *
  */
 uint16_t		r_page_servo_disarmed[PX4IO_SERVO_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+
+/**
+ * PAGE 120
+ *
+ * bytes get from uart & send to spi
+ *
+ */
+uint16_t		r_page_uart_buffer[PKT_MAX_REGS];
+uint32_t        baudrate = 0;
 
 int
 registers_set(uint8_t page, uint8_t offset, const uint16_t *values, unsigned num_values)
@@ -412,6 +438,12 @@ registers_set(uint8_t page, uint8_t offset, const uint16_t *values, unsigned num
 		 * text handling function.
 		 */
 		return mixer_handle_text(values, num_values * sizeof(*values));
+            
+        /* set baudrate of spiuart */
+    case PX4IO_PAGE_UART_BUFFER:
+        baudrate = *((uint32_t *)values);
+        spiuart_setbaud(baudrate);
+        break;
 
 	default:
 		/* avoid offset wrap */
@@ -838,6 +870,24 @@ registers_get(uint8_t page, uint8_t offset, uint16_t **values, unsigned *num_val
 #ifdef ADC_RSSI
 		r_page_scratch[1] = adc_measure(ADC_RSSI);
 #endif
+#ifdef ADC_BATVOLT
+            r_page_scratch[2] = adc_measure(ADC_BATVOLT);
+#endif
+#ifdef ADC_BATCURR
+            r_page_scratch[3] = adc_measure(ADC_BATCURR);
+#endif
+#ifdef ADC_VDD5V
+            r_page_scratch[4] = adc_measure(ADC_VDD5V);
+#endif
+#ifdef ADC_PRESSU
+            r_page_scratch[5] = adc_measure(ADC_PRESSU);
+#endif
+#ifdef ADC_AUX1
+            r_page_scratch[6] = adc_measure(ADC_AUX1);
+#endif
+#ifdef ADC_AUX2
+            r_page_scratch[7] = adc_measure(ADC_AUX2);
+#endif
 		SELECT_PAGE(r_page_scratch);
 		break;
 
@@ -916,6 +966,32 @@ last_offset = offset;
 
 	return 0;
 }
+
+#ifdef CONFIG_ARCH_BOARD_RASPILOTIO_V1
+int
+registers_spiuart(uint8_t page, uint8_t offset, const uint16_t *values_w, uint16_t **values_r, unsigned *num_values)
+{
+    ssize_t		ret;
+    
+    switch (page) {
+            
+        case PX4IO_PAGE_UART_BUFFER:
+            spiuart_output( (uint8_t *)values_w, offset );
+            ret = spiuart_input( (uint8_t *)&r_page_uart_buffer[0], PKT_MAX_REGS * 2 );
+            if (ret < 0) {
+                return -1;
+            }
+            *num_values = ret;
+            *values_r = (uint16_t *)&r_page_uart_buffer[0];
+            break;
+            
+        default:
+            return -1;
+    }
+    
+    return 0;
+}
+#endif
 
 /*
  * Helper function to handle changes to the PWM rate control registers.

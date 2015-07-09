@@ -281,6 +281,9 @@ user_start(int argc, char *argv[])
 
 	/* start the FMU interface */
 	interface_init();
+#ifdef CONFIG_ARCH_BOARD_RASPILOTIO_V1
+    spiuart_init(57600U);
+#endif
 
 	/* add a performance counter for mixing */
 	perf_counter_t mixer_perf = perf_alloc(PC_ELAPSED, "mix");

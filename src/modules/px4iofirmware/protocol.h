@@ -280,6 +280,9 @@ enum {							/* DSM bind states */
 /* PWM disarmed values that are active, even when SAFETY_SAFE */
 #define PX4IO_PAGE_DISARMED_PWM		108			/* 0..CONFIG_ACTUATOR_COUNT-1 */
 
+/* SPI <-> UART */
+#define PX4IO_PAGE_UART_BUFFER		120
+
 /**
  * As-needed mixer data upload.
  *
@@ -317,6 +320,7 @@ struct IOPacket {
 
 #define PKT_CODE_READ		0x00	/* FMU->IO read transaction */
 #define PKT_CODE_WRITE		0x40	/* FMU->IO write transaction */
+#define PKT_CODE_SPIUART	0xC0	/* FMU<->IO spi-uart transaction */
 #define PKT_CODE_SUCCESS	0x00	/* IO->FMU success reply */
 #define PKT_CODE_CORRUPT	0x40	/* IO->FMU bad packet reply */
 #define PKT_CODE_ERROR		0x80	/* IO->FMU register op error reply */
