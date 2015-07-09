@@ -1,0 +1,12 @@
+{
+    "board_id": 21,
+    "magic": "rpilotio-v1",
+    "description": "Firmware for the raspilotio-v1 board",
+    "image": "", 
+    "build_time": 0, 
+    "summary": "RPILOTIOv1",
+    "version": "1.0",
+    "image_size": 0,
+    "git_identity": "",
+    "board_revision": 0
+}
