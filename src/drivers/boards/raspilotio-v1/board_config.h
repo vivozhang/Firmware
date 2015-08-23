@@ -50,7 +50,7 @@
 /* these headers are not C++ safe */
 #include <stm32.h>
 #include <arch/board/board.h>
- 
+
 /******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -77,6 +77,10 @@
 /* Safety switch button *******************************************************/
 
 #define GPIO_BTN_SAFETY (GPIO_INPUT|GPIO_CNF_INFLOAT|GPIO_MODE_INPUT|GPIO_PORTC|GPIO_PIN7)
+
+/* Power switch controls ******************************************************/
+
+#define GPIO_SPEKTRUM_PWR_EN (GPIO_OUTPUT|GPIO_CNF_OUTPP|GPIO_MODE_50MHz|GPIO_OUTPUT_SET|GPIO_PORTC|GPIO_PIN8)
 
 /* Analog inputs **************************************************************/
 
@@ -112,7 +116,7 @@
 #define GPIO_SBUS_OUTPUT  (GPIO_OUTPUT|GPIO_CNF_OUTPP|GPIO_MODE_50MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTB|GPIO_PIN10)
 #define GPIO_SBUS_OENABLE (GPIO_OUTPUT|GPIO_CNF_OUTPP|GPIO_MODE_50MHz|GPIO_OUTPUT_SET|GPIO_PORTC|GPIO_PIN6)
 
-/* 
+/*
  * High-resolution timer
  */
 #define HRT_TIMER		1	/* use timer1 for the HRT */
@@ -131,4 +135,3 @@
 #define LED_SIGNAL        5  /* LED? + LED? */
 #define LED_ASSERTION     6  /* LED? + LED? + LED? */
 #define LED_PANIC         7  /* N/C  + N/C  + N/C + LED? */
-

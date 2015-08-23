@@ -231,7 +231,10 @@ spiuart_output(uint8_t *values, uint16_t num_values)
     /* kill any pending DMA */
     stm32_dmastop(spiuart_tx_dma);
     
-    memcpy(&spiuart_tx_buf[0], values, num_values);
+    if (num_values <= SPIUART_TX_BUF_SIZE)
+        memcpy(&spiuart_tx_buf[0], values, num_values);
+    else
+        memcpy(&spiuart_tx_buf[0], values, SPIUART_TX_BUF_SIZE);
     
     stm32_dmasetup(
                    spiuart_tx_dma,

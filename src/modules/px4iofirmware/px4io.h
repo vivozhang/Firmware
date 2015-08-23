@@ -192,6 +192,7 @@ extern pwm_limit_t pwm_limit;
 #ifdef CONFIG_ARCH_BOARD_RASPILOTIO_V1
 
 # define PX4IO_RELAY_CHANNELS		0
+# define POWER_SPEKTRUM(_s)		stm32_gpiowrite(GPIO_SPEKTRUM_PWR_EN, (_s))
 # define ENABLE_SBUS_OUT(_s)		stm32_gpiowrite(GPIO_SBUS_OENABLE, !(_s))
 
 # define PX4IO_ADC_CHANNEL_COUNT	8
@@ -276,4 +277,3 @@ extern void	isr_debug(uint8_t level, const char *fmt, ...);
 
 /** schedule a reboot */
 extern void schedule_reboot(uint32_t time_delta_usec);
-

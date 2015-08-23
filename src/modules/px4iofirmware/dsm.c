@@ -209,10 +209,15 @@ dsm_init(const char *device)
 	// enable power on DSM connector
 	POWER_SPEKTRUM(true);
 #endif
-    
+
 #ifdef CONFIG_ARCH_BOARD_RASPILOTIO_BETA
-    // enable power on DSM connector
-    POWER_SPEKTRUM(true);
+  // enable power on DSM connector
+  POWER_SPEKTRUM(true);
+#endif
+
+#ifdef CONFIG_ARCH_BOARD_RASPILOTIO_V1
+  // enable power on DSM connector
+  POWER_SPEKTRUM(true);
 #endif
 
 	if (dsm_fd < 0)
@@ -272,9 +277,7 @@ dsm_bind(uint16_t cmd, int pulses)
 		/*power down DSM satellite*/
 #ifdef CONFIG_ARCH_BOARD_PX4IO_V1
 		POWER_RELAY1(0);
-#elif CONFIG_ARCH_BOARD_RASPILOTIO_V1
-            
-#else /* CONFIG_ARCH_BOARD_PX4IO_V2 || CONFIG_ARCH_BOARD_RASPILOTIO_BETA */
+#else /* CONFIG_ARCH_BOARD_PX4IO_V2 || CONFIG_ARCH_BOARD_RASPILOTIO_BETA || CONFIG_ARCH_BOARD_RASPILOTIO_V1 */
 		POWER_SPEKTRUM(0);
 #endif
 		break;
@@ -284,9 +287,7 @@ dsm_bind(uint16_t cmd, int pulses)
 		/*power up DSM satellite*/
 #ifdef CONFIG_ARCH_BOARD_PX4IO_V1
 		POWER_RELAY1(1);
-#elif CONFIG_ARCH_BOARD_RASPILOTIO_V1
-            
-#else /* CONFIG_ARCH_BOARD_PX4IO_V2 || CONFIG_ARCH_BOARD_RASPILOTIO_BETA */
+#else /* CONFIG_ARCH_BOARD_PX4IO_V2 || CONFIG_ARCH_BOARD_RASPILOTIO_BETA || CONFIG_ARCH_BOARD_RASPILOTIO_V1 */
 		POWER_SPEKTRUM(1);
 #endif
 		dsm_guess_format(true);
