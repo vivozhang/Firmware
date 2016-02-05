@@ -1,0 +1,151 @@
+Checked NuttX submodule, correct version found
+Checked mavlink submodule, correct version found
+Checked Eigen submodule, correct version found
+Checked gencpp submodule, correct version found
+Checked genmsg submodule, correct version found
+Generating uORB topic headers
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_armed.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_local_position_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_status.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_attitude_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/offboard_control_mode.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_virtual_fw.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/mc_virtual_rates_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/parameter_update.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/manual_control_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_2.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_local_position.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_force_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_virtual_mc.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_3.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_0.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/pwm_input.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/fw_virtual_rates_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_rates_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_1.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/rc_channels.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/position_setpoint_triplet.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/position_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_attitude.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_global_velocity_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_control_mode.msg
+vehicle_global_velocity_setpoint.h: unchanged
+rc_channels.h: unchanged
+vehicle_status.h: unchanged
+fw_virtual_rates_setpoint.h: unchanged
+actuator_armed.h: unchanged
+pwm_input.h: unchanged
+vehicle_local_position_setpoint.h: unchanged
+vehicle_local_position.h: unchanged
+vehicle_control_mode.h: unchanged
+actuator_controls_3.h: unchanged
+actuator_controls_virtual_fw.h: unchanged
+actuator_controls_2.h: unchanged
+position_setpoint_triplet.h: unchanged
+actuator_controls_0.h: unchanged
+position_setpoint.h: unchanged
+vehicle_attitude_setpoint.h: unchanged
+vehicle_rates_setpoint.h: unchanged
+actuator_controls.h: unchanged
+vehicle_force_setpoint.h: unchanged
+parameter_update.h: unchanged
+actuator_controls_1.h: unchanged
+actuator_controls_virtual_mc.h: unchanged
+vehicle_attitude.h: unchanged
+offboard_control_mode.h: unchanged
+mc_virtual_rates_setpoint.h: unchanged
+manual_control_setpoint.h: unchanged
+Generating multiplatform uORB topic wrapper headers
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_armed.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_local_position_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_status.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_attitude_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/offboard_control_mode.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_virtual_fw.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/mc_virtual_rates_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/parameter_update.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/manual_control_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_2.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_local_position.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_force_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_virtual_mc.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_3.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_0.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/pwm_input.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/fw_virtual_rates_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_rates_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/actuator_controls_1.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/rc_channels.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/position_setpoint_triplet.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/position_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_attitude.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_global_velocity_setpoint.msg
+Generating headers from /home/jie/Documents/vivopilot/stm32firmware/msg/vehicle_control_mode.msg
+vehicle_global_velocity_setpoint.h: unchanged
+rc_channels.h: unchanged
+vehicle_status.h: unchanged
+fw_virtual_rates_setpoint.h: unchanged
+actuator_armed.h: unchanged
+pwm_input.h: unchanged
+vehicle_local_position_setpoint.h: unchanged
+vehicle_local_position.h: unchanged
+vehicle_control_mode.h: unchanged
+actuator_controls_3.h: unchanged
+actuator_controls_virtual_fw.h: unchanged
+actuator_controls_2.h: unchanged
+position_setpoint_triplet.h: unchanged
+actuator_controls_0.h: unchanged
+position_setpoint.h: unchanged
+vehicle_attitude_setpoint.h: unchanged
+vehicle_rates_setpoint.h: unchanged
+actuator_controls.h: unchanged
+vehicle_force_setpoint.h: unchanged
+parameter_update.h: unchanged
+actuator_controls_1.h: unchanged
+actuator_controls_virtual_mc.h: unchanged
+vehicle_attitude.h: unchanged
+offboard_control_mode.h: unchanged
+mc_virtual_rates_setpoint.h: unchanged
+manual_control_setpoint.h: unchanged
+%%%%
+%%%% Building raspilotio-v1_default in /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/
+%%%%
+%  PX4_BASE            = /home/jie/Documents/vivopilot/stm32firmware/
+%  GIT_DESC            = 769c40299d6dbb2b377c260244e3e42cd438f11c
+%  CONFIG              = raspilotio-v1_default
+%  BOARD               = raspilotio-v1
+%  WORK_DIR            = /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/
+%  NUTTX_EXPORT_DIR    = /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/nuttx-export/
+%  NUTTX_CONFIG_HEADER = /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/nuttx-export/include/nuttx/config.h
+make[1]: Entering directory `/home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build'
+%% MODULE_MK           = /home/jie/Documents/vivopilot/stm32firmware/src/drivers/boards/raspilotio-v1/module.mk
+%  MODULE_NAME         = raspilotio-v1
+%  MODULE_SRC          = /home/jie/Documents/vivopilot/stm32firmware/src/drivers/boards/raspilotio-v1/
+%  MODULE_OBJ          = /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build//home/jie/Documents/vivopilot/stm32firmware/src/drivers/boards/raspilotio-v1/module.pre.o
+%  MODULE_WORK_DIR     = /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build//home/jie/Documents/vivopilot/stm32firmware/src/drivers/boards/raspilotio-v1
+make[2]: Entering directory `/home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/home/jie/Documents/vivopilot/stm32firmware/src/drivers/boards/raspilotio-v1'
+make[2]: Nothing to be done for `module'.
+make[2]: Leaving directory `/home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/home/jie/Documents/vivopilot/stm32firmware/src/drivers/boards/raspilotio-v1'
+%% MODULE_MK           = /home/jie/Documents/vivopilot/stm32firmware/src/drivers/stm32/module.mk
+%  MODULE_NAME         = stm32
+%  MODULE_SRC          = /home/jie/Documents/vivopilot/stm32firmware/src/drivers/stm32/
+%  MODULE_OBJ          = /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build//home/jie/Documents/vivopilot/stm32firmware/src/drivers/stm32/module.pre.o
+%  MODULE_WORK_DIR     = /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build//home/jie/Documents/vivopilot/stm32firmware/src/drivers/stm32
+make[2]: Entering directory `/home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/home/jie/Documents/vivopilot/stm32firmware/src/drivers/stm32'
+make[2]: Nothing to be done for `module'.
+make[2]: Leaving directory `/home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/home/jie/Documents/vivopilot/stm32firmware/src/drivers/stm32'
+%% MODULE_MK           = /home/jie/Documents/vivopilot/stm32firmware/src/modules/px4iofirmware/module.mk
+%  MODULE_NAME         = px4iofirmware
+%  MODULE_SRC          = /home/jie/Documents/vivopilot/stm32firmware/src/modules/px4iofirmware/
+%  MODULE_OBJ          = /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build//home/jie/Documents/vivopilot/stm32firmware/src/modules/px4iofirmware/module.pre.o
+%  MODULE_WORK_DIR     = /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build//home/jie/Documents/vivopilot/stm32firmware/src/modules/px4iofirmware
+make[2]: Entering directory `/home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/home/jie/Documents/vivopilot/stm32firmware/src/modules/px4iofirmware'
+make[2]: Nothing to be done for `module'.
+make[2]: Leaving directory `/home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/home/jie/Documents/vivopilot/stm32firmware/src/modules/px4iofirmware'
+LINK:    /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/firmware.elf
+BIN:     /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/firmware.bin
+%% Generating /home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build/firmware.px4
+make[1]: Leaving directory `/home/jie/Documents/vivopilot/stm32firmware/Build/raspilotio-v1_default.build'
+%% Copying /home/jie/Documents/vivopilot/stm32firmware/Images/raspilotio-v1_default.px4
